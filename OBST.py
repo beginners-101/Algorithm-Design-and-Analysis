@@ -4,7 +4,7 @@ q=[]
 for i in range(n):
 	p.append(float(input("Success probability of node "+str(i+1)+" : " )))
 for i in range(n+1):
-	q.append(float(input("Failure probability set "+str(i+1)+" : " )))
+	q.append(float(input("Failure probability of set "+str(i+1)+" : " )))
 
 print(p)
 print(q)
@@ -91,6 +91,23 @@ The OPTIMAL-BST procedure takes Theta(n^3) time, just like MATRIX-CHAINORDER.
 We can easily see that its running time is O(n^3), since its for loops are nested three deep and each loop index takes on atmost n values.
 The loop indices in this Algo do not have exactly the same bounds as those in MATRIX CHAIN ORDER,but they are within atmost 1 in all directions.
 Thus,like MATRIX-CHAINORDER, this Algo takes Omega(n^3) time.
+
+#Comments#
+
+#Input
+No. of nodes : 4
+No. of nodes : 4
+Success probability of node 1 : 3
+Success probability of node 2 : 3
+Success probability of node 3 : 1
+Success probability of node 4 : 1
+Failure probability of set 1 : 2
+Failure probability of set 2 : 3
+Failure probability of set 3 : 1
+Failure probability of set 4 : 1
+Failure probability of set 5 : 1
+p[i] = [0, 3.0, 3.0, 1.0, 1.0]
+q[i] = [2.0, 3.0, 1.0, 1.0, 1.0]
 
 #Comments#
 """
