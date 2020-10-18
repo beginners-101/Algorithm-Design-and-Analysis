@@ -6,6 +6,17 @@ for i in range(n+1):
 m=[[0 for i in range(n+1)] for j in range(n+1)] 
 s=[[0 for i in range(n)] for j in range(n)]
 
+#Print-Optimal-Parens#
+
+def printParen(s,i,j):
+	if(i==j):
+		print('A'+str(i),end ="")
+	else:
+		print('(',end ="")
+		printParen(s,i,s[i][j]-1)
+		printParen(s,s[i][j],j)
+		print(')',end ="")
+
 
 #MATRIX-CHAIN-ORDER
 #difference between i and j is 0
@@ -23,14 +34,19 @@ for l in range(2,n+1):
 				m[i][j]=q
 				s[i][j-1]=k
 
-print(*m,sep="\n")
-print("Min # of multiplication required = ",m[1,n])
-print()
-print(*s,sep="\n")
-print("Parenthesis Locations : ")
+print('\nMinimum cost to calculate the product : ',*m,sep="\n")
+print('\nMin # of multiplication required = ',m[1][n])
 print()
 
+print('Value of k for m[i][j] : ',*s,sep="\n")
+
+print('\nParenthesis Locations : ')
+printParen(s,1,n-1)
+
+
 """
+#Comments#
+
 Matrix multiplication is associative, and so all parenthesizations yield the same product.
 
 If the chain of matrices is <A1;A2;A3;A4>, then we can fully parenthesize the product A1A2A3A4 in ﬁve distinct ways:
@@ -86,4 +102,43 @@ The algorithm requires Theta(n^2) space to store the m and s tables.
 Thus, MATRIX-CHAINORDER is much more efﬁcient than the exponential-time 
 method of enumerating all possible parenthesizations and checking each one.
 
+#INPUTS#
+No. of matrices : 7
+Enter dimension p 0 : 5
+Enter dimension p 1 : 10
+Enter dimension p 2 : 100
+Enter dimension p 3 : 55
+Enter dimension p 4 : 15
+Enter dimension p 5 : 75
+Enter dimension p 6 : 10
+Enter dimension p 7 : 20
+
+#Outputs
+
+Minimum cost to calculate the product :
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 5000, 32500, 36625, 42250, 46000, 47000]
+[0, 0, 0, 55000, 63250, 74500, 76000, 78000]
+[0, 0, 0, 0, 82500, 195000, 74500, 94500]
+[0, 0, 0, 0, 0, 61875, 19500, 30500]
+[0, 0, 0, 0, 0, 0, 11250, 14250]
+[0, 0, 0, 0, 0, 0, 0, 15000]
+[0, 0, 0, 0, 0, 0, 0, 0]
+
+Min # of multiplication required =  47000
+
+Value of k for m[i][j] :
+[0, 0, 0, 0, 0, 0, 0]
+[0, 1, 2, 3, 4, 5, 6]
+[0, 0, 2, 3, 4, 4, 6]
+[0, 0, 0, 3, 4, 3, 6]
+[0, 0, 0, 0, 4, 4, 6]
+[0, 0, 0, 0, 0, 5, 6]
+[0, 0, 0, 0, 0, 0, 6]
+
+Parenthesis Locations :
+(((((A1A2)A3)A4)A5)A6)
+
+
+#Comments#
 """
